@@ -4,13 +4,8 @@ project(caf_io C CXX)
 # e.g., for creating proper Xcode projects
 file(GLOB_RECURSE LIBCAF_IO_HDRS "caf/*.hpp")
 
-enum_to_string("caf/io/basp/message_type.hpp" "message_type_to_string.cpp")
-enum_to_string("caf/io/network/operation.hpp" "operation_to_string.cpp")
-
 # list cpp files excluding platform-dependent files
 set(LIBCAF_IO_SRCS
-  "${CMAKE_CURRENT_BINARY_DIR}/message_type_to_string.cpp"
-  "${CMAKE_CURRENT_BINARY_DIR}/operation_to_string.cpp"
   src/detail/socket_guard.cpp
   src/io/abstract_broker.cpp
   src/io/basp/header.cpp
@@ -49,6 +44,12 @@ set(LIBCAF_IO_SRCS
   src/io/scribe.cpp
   src/policy/tcp.cpp
   src/policy/udp.cpp
+)
+
+# append generated sources
+list(APPEND LIBCAF_IO_SRCS
+  src/io/basp/message_type_to_string.cpp
+  src/io/network/operation_to_string.cpp
 )
 
 add_custom_target(libcaf_io)

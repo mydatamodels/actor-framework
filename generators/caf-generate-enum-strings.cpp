@@ -47,7 +47,7 @@ void keep_alnum(string& str) {
 int main(int argc, char** argv) {
   if (argc != 3) {
     cerr << "wrong number of arguments.\n"
-         << "usage: " << argv[0] << "input-file output-file\n";
+         << "usage: " << argv[0] << " input-file output-file\n";
     return EXIT_FAILURE;
   }
   std::ifstream in{argv[1]};
