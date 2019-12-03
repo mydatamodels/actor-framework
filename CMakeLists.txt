@@ -47,6 +47,12 @@ if(NOT CMAKE_CROSSCOMPILING)
     endif()
     add_compile_options("${cxx_flag}")
   endif()
+
+  # generate code
+  execute_process(COMMAND "${CMAKE_COMMAND}" .
+                  WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}/generators")
+  execute_process(COMMAND "${CMAKE_COMMAND}" --build .
+                  WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}/generators")
 endif()
 
 # Be nice to VIM users and Clang tools.
